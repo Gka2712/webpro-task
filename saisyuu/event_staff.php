@@ -11,7 +11,7 @@
        $username='root';
        $pass='dbpass';
        $dbname='saisyuu';
-       $tablename='eventmanegement';
+       $tablename='Eventmanagement';
        $name=$_POST['name']; 
        echo '<p>'.htmlspecialchars($name).'</p>';
        mysqli_report(MYSQLI_REPORT_OFF);
@@ -25,7 +25,8 @@
 
        }
        $result=mysqli_query($link,"SELECT * FROM $tablename");
-       if(mysqli_num_rows($result)<=0)
+       if(!$result){exit("select error");}
+       elseif(mysqli_num_rows($result)<=0)
        {
            echo '今登録されているデータベースがありません。';
        }

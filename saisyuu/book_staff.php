@@ -12,7 +12,7 @@
          $username='root';
          $pass='dbpass';
          $dbname='saisyuu';
-         $tablename='bookmanegement';
+         $tablename='Bookmanagement';
          $name=$_POST['name'];
          echo '<p>'.htmlspecialchars($name).'</p>';
          mysqli_report(MYSQLI_REPORT_OFF);
@@ -22,7 +22,7 @@
          {
              $add_title=$_POST['add_title'];
              $result=mysqli_query($link,"INSERT INTO $tablename SET book='$add_title',condi='in_stock'");
-             if(!$result){exit("insert error");}
+             if(!$result){mysqli_error($link);}
          }
          if(array_key_exists('delete',$_POST))
          {
@@ -32,8 +32,8 @@
              if(!$result){exit("delete error");}
          }
          $result=mysqli_query($link,"SELECT * FROM $tablename");
-         if(!$result){exit("select error");}
-         if(mysqli_num_rows($result)<=0)
+         if(!$result){mysqli_error($link);}
+         elseif(mysqli_num_rows($result)===0)
          {
              echo '今登録されているデータベースがありません';
          }
@@ -77,9 +77,9 @@ EOT;
 EOT;
              }
              echo '</table>';
-             
+             mysqli_free_result($result);
          }
-         mysqli_free_result($result);
+
          mysqli_close($link);
          echo <<<EOT
              <br>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +15,8 @@
         $username='root';
         $pass='dbpass';
         $dbname='saisyuu';
-        $tablename1='bookmanegement';
-        $tablename2='usermanegement';
+        $tablename1='Bookmanagement';
+        $tablename2='Usermanagement';
         $lendday=date_format(new DateTime('now'),'Y-m-d H:i:s');
         $returndueday=date_format(new DateTime('+2 week'),'Y-m-d H:i:s');
         echo '<p>'.htmlspecialchars($name).'</p>';
@@ -25,7 +26,7 @@
         $result=mysqli_query($link,"UPDATE $tablename1 SET condi='lend',user='$name',lendday='$lendday',returndueday='$returndueday' WHERE num='$num'");
         if(!$result){exit(mysqli_error($link));}
         $result=mysqli_query($link,"UPDATE $tablename2 SET condi='lend' WHERE name='$name'");
-        if(!$result){exit("update error2!");};
+        if(!$result){exit(mysqli_error($link));};
         mysqli_close($link);
         echo htmlspecialchars($name).'さん';
         echo '貸出内容は以下の通りです。<br>';
@@ -34,7 +35,7 @@
         echo '貸出日'.htmlspecialchars($lendday).'<br>';
         echo '返却日'.htmlspecialchars($returndueday).'<br>';
         echo <<<EOT
-        <form method="post" action="book_user.php">
+        <form method="post" action="book_user_top.php">
             <input type="hidden" name="name" value="$name">
             <button type="submit" name="return" value="">戻る</button>
         </form>

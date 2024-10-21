@@ -11,11 +11,11 @@
         $username='root';
         $pass='dbpass';
         $dbname='saisyuu';
-        $tablename='usermanegement';
+        $tablename='Usermanagement';
         mysqli_report(MYSQLI_REPORT_OFF);
         $link=mysqli_connect($hostname,$username,$pass,$dbname);
         if(!$link){exit("退会処理ができませんでした 原因:データベースの不具合");}
-        $result=mysqli_query($link,"DELETE FROM usermanegement WHERE (name='$name')");
+        $result=mysqli_query($link,"DELETE FROM $tablename WHERE (name='$name')");
         if(!$result){exit("退会処理ができませんでした");}
         echo htmlspecialchars($name).'さん、退会処理を完了いたしました';
         echo <<<EOT

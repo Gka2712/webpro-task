@@ -12,7 +12,7 @@
         $username='root';
         $pass='dbpass';
         $dbname='saisyuu';
-        $tablename='bookmanegement';
+        $tablename='Bookmanagement';
         echo '<p>'.htmlspecialchars($name).'</p>';
         mysqli_report(MYSQLI_REPORT_OFF);
         $link=mysqli_connect($hostname,$username,$pass,$dbname);
@@ -22,8 +22,6 @@
             $book=$_POST['book'];
             $result=mysqli_query($link,"UPDATE $tablename SET condi='in_stock',user=NULL,lendday=NULL,returndueday=NULL WHERE (book='$book')AND(user='$name')");
             if(!$result){exit(mysqli_error($link));}
-            $result=mysqli_query($link,"UPDATE usermanegement SET condi=NULL WHERE name='$name'");
-            if(!$result){exit("update error2!");}
         }
         $result=mysqli_query($link,"SELECT * FROM $tablename where user='$name'");
         if(!$result){exit("select error!");}

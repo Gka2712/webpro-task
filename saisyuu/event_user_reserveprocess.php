@@ -9,7 +9,7 @@
         $username='root';
         $pass='dbpass';
         $dbname='saisyuu';
-        $tablename='eventreservation';
+        $tablename='Eventreservation';
         $name=$_POST['name'];
         $event_num=$_POST['num'];
         echo '<h3>Library</h3>';

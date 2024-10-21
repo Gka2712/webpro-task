@@ -19,7 +19,7 @@ EOT;
            $username='root';
            $pass='dbpass';
            $dbname='saisyuu';
-           $tablename='usermanegement';
+           $tablename='Usermanagement';
            mysqli_report(MYSQLI_REPORT_OFF);
            echo <<<EOT
            <h3>図書館マイページ</h3>
@@ -29,7 +29,7 @@ EOT;
            $password=hash("sha256",$password);
            $link=mysqli_connect($hostname,$username,$pass,$dbname);
            if(!$link){exit("障害が起きました。時間をおいてからアクセスしてください");}
-           $result=mysqli_query($link,"INSERT INTO $tablename SET type='$type',name='$name',phonenum='$phonenum',adress='$address',email='$mail',userID='$userID',password='$password',salt='$salt'");
+           $result=mysqli_query($link,"INSERT INTO $tablename SET type='$type',name='$name',phonenum='$phonenum',address='$address',userID='$userID',password='$password',salt='$salt'");
            if(!$result){
               $error=mysqli_error($link);
               exit($error);

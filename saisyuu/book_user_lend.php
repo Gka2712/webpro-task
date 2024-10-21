@@ -12,7 +12,7 @@
         $username='root';
         $pass='dbpass';
         $dbname='saisyuu';
-        $tablename='bookmanegement';
+        $tablename='Bookmanagement';
         echo '<p>'.htmlspecialchars($name).'</p>';
         mysqli_report(MYSQLI_REPORT_OFF);
         $link=mysqli_connect($hostname,$username,$pass,$dbname);
